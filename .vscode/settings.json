@@ -1,0 +1,7 @@
+{
+    "cucumberautocomplete.steps":["./TALENTOZ/ROOT/POM/features/*/stepDefinition/*.ts"],
+    "cucumberautocomplete.syncfeatures":"./TALENTOZ/ROOT/POM/features/*/*.feature",
+    "cucumberautocomplete.strictGherkinCompletion": true,
+    "cucumberautocomplete.strictGherkinValidation": true,  
+    "typescript.preferences.importModuleSpecifierEnding": "js",
+}

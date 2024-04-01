@@ -1,0 +1,51 @@
+name: TALENTOZ_Automation Testing to Run Every Sanity needs
+on:
+  # schedule:
+  #   - cron: "0 23 * * *"
+  push:
+    branches: [ main, release]
+  pull_request:
+    branches: [ main, release]
+  workflow_dispatch:
+     inputs:
+       tags:
+         description: 'TALENTOZ WDIO Automation Testing'
+jobs:
+  build:
+    runs-on: windows-latest
+    env:
+      RUNNER: ${{secrets.RUNNER}}
+      LOG_LEVEL: ${{secrets.LOG_LEVEL}}
+      QA_ADMIN_USERNAME: ${{secrets.QA_ADMIN_USERNAME}}
+      DF_PASSWORD: ${{secrets.DF_PASSWORD}}
+      QA_NEWCREATEDEMP_PASSWORD: ${{secrets.QA_NEWCREATEDEMP_PASSWORD}}
+      DEV_PAYROLE_TEST_USER: ${{secrets.DEV_PAYROLE_TEST_USER}}
+      DEV_PAYROLE_TEST_USER_PWD: ${{secrets.DEV_PAYROLE_TEST_USER_PWD}}
+      WEB_BASE_URL: ${{secrets.WEB_BASE_URL}}
+      API_BASE_URL: ${{secrets.API_BASE_URL}}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      ENVIRONMENT: ${{secrets.ENVIRONMENT}}
+      PUBLISH_BRANCH: gh-pages
+      PUBLISH_DIR: allure-history
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+      - name: Install dependencies
+        run: npm install
+      - name: Install Allure CLI
+        run: npm install -g allure-commandline
+      - name: Executing tests
+        id: tests
+        run: npm run CI_Sanity
+      - name: Generating Allure Report
+        if: always() || steps.tests.outcome == 'failure'
+        run: allure generate allure-results
+      - uses: actions/upload-artifact@v4
+        if: always()
+        continue-on-error: true
+        with:
+          name: Allure_Report
+          path: allure-report
