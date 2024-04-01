@@ -10,7 +10,7 @@ Typescript & TS Node
 
 Typescript version should be >= 4.0.5
 
-Open 'CMD' and navigate to our project location. ( how to locate our project in CMD is, example “ `cd` `C:\Users\JeevaSubramanian\Documents\GitHub\TOZ_QA_Automation` “ )
+Open 'CMD' and navigate to our project location. ( how to locate our project in CMD is, example “ `cd` `https://github.com/JeevCode/TOZ_Practice` “ )
 
 Install the below packages in your machine,
 
@@ -48,7 +48,7 @@ Here is the link to download Visual Studio Code - Code Editing.
 
 ## Quick Start
 
-**Step1:** Clone the github project using the link here https://github.com/talentozhub/TOZ_QA_Automation.git
+**Step1:** Clone the github project using the link here https://github.com/JeevCode/TOZ_Practice.git
 
 **Step2:** Open the VS Code and click “Open Folder” option navigate the cloned project location.
 
