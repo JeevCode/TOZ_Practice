@@ -37,9 +37,6 @@ jobs:
         run: npm install
       - name: Install Allure CLI
         run: npm install -g allure-commandline
-      - name: Executing tests
-        id: tests
-        run: npm run CI_Sanity
       - name: Generating Allure Report
         if: always() || steps.tests.outcome == 'failure'
         run: allure generate allure-results

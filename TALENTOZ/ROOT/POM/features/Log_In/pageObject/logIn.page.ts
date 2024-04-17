@@ -10,10 +10,17 @@ class LogInPage extends Page {
    * define selectors using getter or function methods
    */
   
+  public async LogIn_Input(placeholderText:string) {
+    return $(`//input[@placeholder="${placeholderText}"]`)
+  };
+
+  public get Enter_Btn() {
+    return $(`#enterbtn`)
+  };
 
   
   public open() {
-    return super.open(process.env.WEB_BASE_URL);
+    return super.open("");
   }
 }
 
