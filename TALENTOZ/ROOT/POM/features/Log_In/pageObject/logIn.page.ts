@@ -5,9 +5,21 @@ import Page from "./page.js";
  * sub page containing specific selectors and methods for a specific page
  */
 class LogInPage extends Page {
+  /********************************************************************************************************************************
+   * define selectors using getter or function methods
+   */
+  
+  public async LogIn_Input(placeholderText:string) {
+    return $(`//input[@placeholder="${placeholderText}"]`)
+  };
 
- public open() {
-    return super.open(process.env.WEB_BASE_URL);
+  public get Enter_Btn() {
+    return $(`#enterbtn`)
+  };
+
+  
+  public open() {
+    return super.open("");
   }
 }
 
