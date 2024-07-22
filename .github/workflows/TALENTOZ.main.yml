@@ -3,13 +3,13 @@ on:
   # schedule:
   #   - cron: "0 23 * * *"
   push:
-    branches: [ main, release]
+    branches: [main, release]
   pull_request:
-    branches: [ main, release]
+    branches: [main, release]
   workflow_dispatch:
-     inputs:
-       tags:
-         description: 'TALENTOZ WDIO Automation Testing'
+    inputs:
+      tags:
+        description: "TALENTOZ WDIO Automation Testing"
 jobs:
   build:
     runs-on: windows-latest
@@ -46,3 +46,9 @@ jobs:
         with:
           name: Allure_Report
           path: allure-report
+      - name: Deploy to GitHub Pages (conditional on push to main branch)
+        uses: actions/deploy-pages@v1
+        if: github.event.name == 'push' && github.base_branch == 'main' # Update branches as needed
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          local-dir: allure-report # Update with the directory containing your reports (same as upload-artifact)
