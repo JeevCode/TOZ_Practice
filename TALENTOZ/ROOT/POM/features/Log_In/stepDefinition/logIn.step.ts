@@ -1,13 +1,22 @@
-import { Given, When, Then } from "@wdio/cucumber-framework";
-import logInPage from "../pageObject/logIn.page.js";
+//import { Given } from "@wdio/cucumber-framework";
 
-Given(/^the user is opned the browser and navigated to url$/, async function () {
-    await logInPage.open();
+import { Given, Then,When } from "@wdio/cucumber-framework";
+import loginPage from "../pageObject/LogIn.page.js";
 
-    //Enter the user Email address
-    await (await logInPage.LogIn_Input("E mail")).setValue(process.env.QA_ADMIN_USERNAME);
-    await (await logInPage.LogIn_Input("Password")).setValue(process.env.QA_PASSWORD);
-    await logInPage.Enter_Btn.click();
-    await browser.pause(3000);
 
+Given(/^the user has opened the browser and naivgate to the page$/, async function () {
+
+  await loginPage.open();
+  await browser.maximizeWindow();
+});
+
+When(/^i enter the mailID in the feild$/,async function () {
+  const entermailid = await $("//input[@id='email']"); 
+  await entermailid.setValue("mariyam@deel.com");
+});
+
+Then(/^i can see the signup page$/, async function () {
+  const Login = await $("#enterimg");
+  await Login.click();
+  await browser.pause(7000);
 });
