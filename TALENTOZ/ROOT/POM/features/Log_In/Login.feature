@@ -1,10 +1,8 @@
-Feature: Open the browser and login using mail id
+Feature: Open the browser and Login
 
-    @LogIn
-    Scenario Outline: <TESTID> : Browser opening and logging to the page
-        Given the user has opened the browser and naivgate to the page
-        When i enter the mailID in the feild
-        Then i can see the signup page 
+    @Login
+    Scenario Outline: <TESTID> : Open the browser and enter the log in details
+        Given the user is opned the browser and navigated to url
         Examples:
             | TESTID |
-            | T001   |
+            | TC_01  |
